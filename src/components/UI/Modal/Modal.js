@@ -11,10 +11,6 @@ export default class Modal extends Component {
     );
   }
 
-  componentDidUpdate() {
-    console.log('Modal will update');
-  }
-
   render() {
     return (
       <>
@@ -28,7 +24,7 @@ export default class Modal extends Component {
             transform: this.props.show
               ? 'translateY(0)'
               : 'translateY(-100vh)',
-            opacity: this.props.show ? '1' : '0'
+            opacity: this.props.show ? '1' : '0',
           }}
         >
           {this.props.children}

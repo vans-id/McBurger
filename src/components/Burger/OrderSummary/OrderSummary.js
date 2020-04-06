@@ -4,7 +4,7 @@ import Button from '../../UI/Button/Button';
 export default function OrderSummary(props) {
   const ingredientSummary = Object.keys(
     props.ingredients
-  ).map(igKey => (
+  ).map((igKey) => (
     <li key={igKey}>
       <span style={{ textTransform: 'capitalize' }}>
         {igKey}

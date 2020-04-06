@@ -4,7 +4,7 @@ import * as actionTypes from './actionTypes';
 
 export const authStart = () => {
   return {
-    type: actionTypes.AUTH_START
+    type: actionTypes.AUTH_START,
   };
 };
 
@@ -12,14 +12,14 @@ export const authSuccess = (token, userId) => {
   return {
     type: actionTypes.AUTH_SUCCESS,
     idToken: token,
-    userId
+    userId,
   };
 };
 
-export const authFailed = error => {
+export const authFailed = (error) => {
   return {
     type: actionTypes.AUTH_FAILED,
-    error
+    error,
   };
 };
 
@@ -29,12 +29,12 @@ export const logout = () => {
   localStorage.removeItem('userId');
 
   return {
-    type: actionTypes.AUTH_LOGOUT
+    type: actionTypes.AUTH_LOGOUT,
   };
 };
 
-export const checkAuthTimeout = expTime => {
-  return dispatch => {
+export const checkAuthTimeout = (expTime) => {
+  return (dispatch) => {
     setTimeout(() => {
       dispatch(logout());
     }, expTime * 1000);
@@ -42,14 +42,14 @@ export const checkAuthTimeout = expTime => {
 };
 
 export const auth = (email, password, isSignup) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       dispatch(authStart());
 
       const authData = {
         email,
         password,
-        returnSecureToken: true
+        returnSecureToken: true,
       };
 
       let url =
@@ -62,7 +62,6 @@ export const auth = (email, password, isSignup) => {
 
       const res = await axios.post(url, authData);
 
-      console.log(res);
       // Give token to local storage
       const expirationDate = new Date(
         new Date().getTime() +
@@ -86,16 +85,16 @@ export const auth = (email, password, isSignup) => {
   };
 };
 
-export const setAuthRedirectPath = path => {
+export const setAuthRedirectPath = (path) => {
   return {
     type: actionTypes.SET_AUTH_REDIRECT_PATH,
-    path
+    path,
   };
 };
 
 // Check token validity in local storage (if have any)
 export const authCheckState = () => {
-  return dispatch => {
+  return (dispatch) => {
     const token = localStorage.getItem('token');
 
     if (!token) {

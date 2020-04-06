@@ -12,16 +12,16 @@ import axios from '../../axios';
 
 class BurgerBuilder extends Component {
   state = {
-    purchasing: false
+    purchasing: false,
   };
 
   componentDidMount() {
     this.props.onInitIngredients();
   }
 
-  updatePurchaseState = ingredients => {
+  updatePurchaseState = (ingredients) => {
     const sum = Object.keys(ingredients)
-      .map(igKey => {
+      .map((igKey) => {
         return ingredients[igKey];
       })
       .reduce((sum, el) => {
@@ -34,7 +34,7 @@ class BurgerBuilder extends Component {
   purchaseHandler = () => {
     if (this.props.isAuthenticated) {
       this.setState({
-        purchasing: true
+        purchasing: true,
       });
     } else {
       this.props.onSetAuthRedirectPath('/checkout');
@@ -44,7 +44,7 @@ class BurgerBuilder extends Component {
 
   purchaseCancelHandler = () => {
     this.setState({
-      purchasing: false
+      purchasing: false,
     });
   };
 
@@ -55,7 +55,7 @@ class BurgerBuilder extends Component {
 
   render() {
     const disabledInfo = {
-      ...this.props.ings
+      ...this.props.ings,
     };
 
     for (let key in disabledInfo) {
@@ -120,27 +120,27 @@ class BurgerBuilder extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     ings: state.burgerBuilder.ingredients,
     price: state.burgerBuilder.totalPrice,
     error: state.burgerBuilder.error,
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onIngredientAdded: ingName =>
+    onIngredientAdded: (ingName) =>
       dispatch(actions.addIngredient(ingName)),
-    onIngredientRemove: ingName =>
+    onIngredientRemove: (ingName) =>
       dispatch(actions.removeIngredient(ingName)),
     onInitIngredients: () =>
       dispatch(actions.initIngredients()),
     onInitPurchase: () =>
       dispatch(actions.purchaseInit()),
-    onSetAuthRedirectPath: path =>
-      dispatch(actions.setAuthRedirectPath(path))
+    onSetAuthRedirectPath: (path) =>
+      dispatch(actions.setAuthRedirectPath(path)),
   };
 };
 
