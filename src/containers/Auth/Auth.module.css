@@ -1,0 +1,26 @@
+.Auth {
+  background-color: #fff;
+  color: #212121;
+  border-radius: 11px;
+  margin: auto;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 4px 0 #ccc;
+  padding: 10px 25px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 500px) {
+  .Auth {
+    width: 500px;
+  }
+}
+
+.Alert {
+  padding: 15px;
+  width: 90%;
+  margin: 10px auto;
+  border-radius: 5px;
+  background-color: #fdecea;
+  color: #212121;
+}
