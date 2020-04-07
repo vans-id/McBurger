@@ -1,36 +1,36 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios';
 
-export const addIngredient = ingName => {
+export const addIngredient = (ingName) => {
   return {
     type: actionTypes.ADD_INGREDIENT,
-    name: ingName
+    name: ingName,
   };
 };
 
-export const removeIngredient = ingName => {
+export const removeIngredient = (ingName) => {
   return {
     type: actionTypes.REMOVE_INGREDIENT,
-    name: ingName
+    name: ingName,
   };
 };
 
-export const setIngredients = ingredients => {
+export const setIngredients = (ingredients) => {
   return {
     type: actionTypes.SET_INGREDIENTS,
-    ingredients
+    ingredients,
   };
 };
 
 export const fetchIngredientsFailed = () => {
   return {
-    type: actionTypes.FETCH_INGREDIENTS_FAILED
+    type: actionTypes.FETCH_INGREDIENTS_FAILED,
   };
 };
 
 // w redux-thunk
 export const initIngredients = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const res = await axios.get('/ingredients.json');
 
@@ -39,4 +39,8 @@ export const initIngredients = () => {
       dispatch(fetchIngredientsFailed());
     }
   };
+};
+
+export const setMenu = (menu) => {
+  return { type: actionTypes.SET_MENU, menu };
 };

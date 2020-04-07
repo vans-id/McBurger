@@ -139,6 +139,9 @@ class Auth extends Component {
     let renderedForm = (
       <>
         <h2>SIGN IN</h2>
+        <img
+          src={require('../../assets/images/login.jpg')}
+        />
         <div>Don't have an account?</div>
         <Button
           btnType='Failed'
@@ -158,6 +161,9 @@ class Auth extends Component {
       renderedForm = (
         <>
           <h2>CREATE AN ACCOUNT</h2>
+          <img
+            src={require('../../assets/images/login.jpg')}
+          />
           <div>Already have an account?</div>
           <Button
             btnType='Failed'

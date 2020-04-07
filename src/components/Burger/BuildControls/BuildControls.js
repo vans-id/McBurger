@@ -2,12 +2,13 @@ import React from 'react';
 
 import classes from './BuildControls.module.css';
 import BuildControl from './BuildControl/BuildControl';
+import Carousel from '../../Carousel/Carousel';
 
 const controls = [
   { label: 'Salad', type: 'salad' },
   { label: 'Bacon', type: 'bacon' },
   { label: 'Cheese', type: 'cheese' },
-  { label: 'Meat', type: 'meat' }
+  { label: 'Meat', type: 'meat' },
 ];
 
 export default function BuildControls(props) {
@@ -18,7 +19,7 @@ export default function BuildControls(props) {
         <span>&euro; {props.price.toFixed(2)}</span>
       </p>
 
-      {controls.map(ctrl => (
+      {controls.map((ctrl) => (
         <BuildControl
           key={ctrl.label}
           label={ctrl.label}
@@ -42,6 +43,8 @@ export default function BuildControls(props) {
           ? 'ORDER NOW'
           : 'SIGN UP TO ORDER'}
       </button>
+
+      <Carousel setMenu={props.setMenu} />
     </div>
   );
 }

@@ -1,0 +1,10 @@
+.Container {
+  width: 85%;
+  margin: 10px auto;
+}
+
+@media (min-width: 500px) {
+  .Container {
+    max-width: 550px;
+  }
+}

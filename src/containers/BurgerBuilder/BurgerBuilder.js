@@ -74,7 +74,6 @@ export class BurgerBuilder extends Component {
       burger = (
         <>
           <Burger ingredients={this.props.ings} />
-          {/* Recomendation Component */}
           <BuildControls
             ingredientAdded={
               this.props.onIngredientAdded
@@ -90,6 +89,7 @@ export class BurgerBuilder extends Component {
             ordered={this.purchaseHandler}
             ingredients={this.props.ings}
             isAuth={this.props.isAuthenticated}
+            setMenu={this.props.onSetMenu}
           />
         </>
       );
@@ -142,6 +142,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.purchaseInit()),
     onSetAuthRedirectPath: (path) =>
       dispatch(actions.setAuthRedirectPath(path)),
+    onSetMenu: (menu) =>
+      dispatch(actions.setMenu(menu)),
   };
 };
 
