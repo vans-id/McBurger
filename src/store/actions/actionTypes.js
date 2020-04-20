@@ -29,3 +29,5 @@ export const SET_AUTH_REDIRECT_PATH =
   'SET_AUTH_REDIRECT_PATH';
 
 export const SET_MENU = 'SET_MENU';
+export const AUTH_CHECK_TIMEOUT = 'AUTH_CHECK_TIMEOUT';
+export const AUTH_USER = 'AUTH_USER';

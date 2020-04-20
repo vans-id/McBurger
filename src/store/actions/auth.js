@@ -24,64 +24,30 @@ export const authFailed = (error) => {
 };
 
 export const logout = () => {
-  // localStorage.removeItem('token');
-  // localStorage.removeItem('expirationDate');
-  // localStorage.removeItem('userId');
-
   return {
     type: actionTypes.AUTH_INITIATE_LOGOUT,
   };
 };
 
+export const logoutSucceed = () => {
+  return {
+    type: actionTypes.AUTH_LOGOUT,
+  };
+};
+
 export const checkAuthTimeout = (expTime) => {
-  return (dispatch) => {
-    setTimeout(() => {
-      dispatch(logout());
-    }, expTime * 1000);
+  return {
+    type: actionTypes.AUTH_CHECK_TIMEOUT,
+    expTime,
   };
 };
 
 export const auth = (email, password, isSignup) => {
-  return async (dispatch) => {
-    try {
-      dispatch(authStart());
-
-      const authData = {
-        email,
-        password,
-        returnSecureToken: true,
-      };
-
-      let url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA1sByHCOtnSKyRomAVldHiMFQzm_OMEgA';
-
-      if (!isSignup) {
-        url =
-          'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA1sByHCOtnSKyRomAVldHiMFQzm_OMEgA';
-      }
-
-      const res = await axios.post(url, authData);
-
-      // Give token to local storage
-      const expirationDate = new Date(
-        new Date().getTime() +
-          res.data.expiresIn * 1000
-      );
-
-      localStorage.setItem('token', res.data.idToken);
-      localStorage.setItem(
-        'expirationDate',
-        expirationDate
-      );
-      localStorage.setItem('userId', res.data.localId);
-
-      dispatch(
-        authSuccess(res.data.idToken, res.data.localId)
-      );
-      dispatch(checkAuthTimeout(res.data.expiresIn));
-    } catch (err) {
-      dispatch(authFailed(err.response.data.error));
-    }
+  return {
+    type: actionTypes.AUTH_USER,
+    email,
+    password,
+    isSignup,
   };
 };
 
