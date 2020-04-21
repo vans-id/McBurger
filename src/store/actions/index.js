@@ -3,6 +3,8 @@ export {
   removeIngredient,
   initIngredients,
   setMenu,
+  setIngredients,
+  fetchIngredientsFailed,
 } from './burgerBuilder';
 
 export {

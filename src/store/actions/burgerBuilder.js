@@ -1,5 +1,4 @@
 import * as actionTypes from './actionTypes';
-import axios from '../../axios';
 
 export const addIngredient = (ingName) => {
   return {
@@ -27,17 +26,9 @@ export const fetchIngredientsFailed = () => {
     type: actionTypes.FETCH_INGREDIENTS_FAILED,
   };
 };
-
-// w redux-thunk
 export const initIngredients = () => {
-  return async (dispatch) => {
-    try {
-      const res = await axios.get('/ingredients.json');
-
-      dispatch(setIngredients(res.data));
-    } catch (err) {
-      dispatch(fetchIngredientsFailed());
-    }
+  return {
+    type: actionTypes.INIT_INGREDIENTS,
   };
 };
 
