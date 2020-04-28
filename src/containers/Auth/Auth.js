@@ -141,6 +141,7 @@ class Auth extends Component {
         <h2>SIGN IN</h2>
         <img
           src={require('../../assets/images/login.jpg')}
+          alt='login'
         />
         <div>Don't have an account?</div>
         <Button
@@ -163,6 +164,7 @@ class Auth extends Component {
           <h2>CREATE AN ACCOUNT</h2>
           <img
             src={require('../../assets/images/login.jpg')}
+            alt='signup'
           />
           <div>Already have an account?</div>
           <Button

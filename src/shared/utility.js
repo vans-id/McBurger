@@ -23,7 +23,7 @@ export const checkValidity = (value, rules) => {
       value.length <= rules.maxLength && isValid;
   }
   if (rules.isEmail) {
-    const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     isValid = pattern.test(value) && isValid;
   }
   if (rules.isNumber) {
